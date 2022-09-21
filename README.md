@@ -1,2 +1,5 @@
 # Aisling
-Cross-Chain Mobile 
+
+Cross-Chain Mobile Minting and Mining
+
+
