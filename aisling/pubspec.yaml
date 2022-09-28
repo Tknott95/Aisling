@@ -31,7 +31,6 @@ dependencies:
     sdk: flutter
   
   sleek_circular_slider : ^2.0.1
-  http: ^0.13.5
 
 
   # The following adds the Cupertino Icons font to your application.
