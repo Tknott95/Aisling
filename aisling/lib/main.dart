@@ -26,7 +26,7 @@ Future<void> setFansFetch(int _gpuIndex, int _val) async {
 void main() {
   runApp(const MyApp());
 
-  setFansFetch();
+  // setFansFetch();
   // Map<String, String> myHeaders = Map<String, String>();
   // myHeaders ['alice'] = 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>';
   // final ijk = Uri.parse('http://localhost:8080/api/setFans/0/50');
