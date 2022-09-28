@@ -1,8 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
+import 'dart:async';
+
+/* @TODO refactor this http code */
+import 'package:http/http.dart' as http;
+  
+Future<void> setFansFetch() async {
+  /* I use GET instead of POST with auth */
+  // Map<String, String> myHeaders = Map<String, String>();
+  // myHeaders ['alice'] = 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>';
+
+   print("\n SETTING FANS");
+    Map<String, String> requestHeaders = {
+      'Content-type': 'application/json',
+      'Accept': 'application/json',
+      'Accept': "*/*",
+      'connection': 'keep-alive',
+      'Accept-Encoding' : 'gzip, deflate, br',
+      'alice': 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>'
+  };  
+
+ http.Response response = await http.get(Uri.parse('http://localhost:8080/api/setFans/0/50'), headers: requestHeaders);
+ print(response.body);
+}
+
 void main() {
   runApp(const MyApp());
+
+  setFansFetch();
+  // Map<String, String> myHeaders = Map<String, String>();
+  // myHeaders ['alice'] = 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>';
+  // final ijk = Uri.parse('http://localhost:8080/api/setFans/0/50');
+  // var response = http.get(ijk);  // print(x);
 }
 
 class MyApp extends StatelessWidget {
@@ -164,6 +194,7 @@ class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
                   ),
                   onChange: (double value) {
                     // nvidia_set_graphics_clock(gpuIndex, value.round());
+                    // setFansFetch();
                   }
                 ),
               ],
