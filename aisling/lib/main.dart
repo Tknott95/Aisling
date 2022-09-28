@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,18 +49,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,21 +85,88 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            // const Text(
+            //   'hehehehehehehehe',
+            // ),
+            // Text(
+            //   'Set Clocks',
+            //   style: Theme.of(context).textTheme.headline4,
+            // ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                SliderWidgetGraphics(gpuIndex: 0),
+                SizedBox(width: 5),
+                SliderWidgetGraphics(gpuIndex: 1),
+              ],
+            ), 
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),// This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+}
+
+class SliderWidgetGraphics extends StatefulWidget {
+  final gpuIndex;
+  const SliderWidgetGraphics({Key? key, @required this.gpuIndex}) : super(key: key);
+
+  @override
+  State<SliderWidgetGraphics> createState() => _SliderWidgetStateGraphics();
+}
+
+class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
+  var gpuIndex;
+  @override
+  void initState() {
+    gpuIndex = widget.gpuIndex;
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return  Column(
+              children: [
+                Text(
+                  'GPU_$gpuIndex GRAPHICS',
+                  style: Theme.of(context).textTheme.headline6,
+                  ),
+                SleekCircularSlider(
+                  min: 0,
+                  max: 80,
+                  initialValue: 5,
+                  innerWidget: (sliderValue) => Center(
+                    child: Text(
+                        "+"+sliderValue.toStringAsFixed(0),
+                        style: Theme.of(context).textTheme.bodyText1,
+                      )
+                    ),
+                  appearance: CircularSliderAppearance(
+                    size: 85,
+                    customWidths: CustomSliderWidths(
+                      //handlerSize: 20,
+                      trackWidth: 1,
+                      //shadowWidth: 0,
+                      progressBarWidth: 11,
+                    ),
+                    customColors: CustomSliderColors(
+                      dotColor: const Color.fromARGB(175, 255, 255, 255)/*Theme.of(context).primaryColor*/,
+                      trackColor: const Color.fromARGB(172, 0, 0, 0),
+                      progressBarColors: const [
+                      Color.fromARGB(255, 240, 40, 13),
+                      Color.fromARGB(255, 238, 169, 20),
+                      Color.fromARGB(255, 8, 63, 3),
+                      Color.fromARGB(255, 50, 192, 45),
+                      ],
+                     shadowColor: const Color.fromARGB(255, 0, 0, 0),
+                    ),
+                  ),
+                  onChange: (double value) {
+                    // nvidia_set_graphics_clock(gpuIndex, value.round());
+                  }
+                ),
+              ],
+            );
   }
 }
