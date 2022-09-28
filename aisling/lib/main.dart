@@ -14,14 +14,12 @@ Future<void> setFansFetch() async {
    print("\n SETTING FANS");
     Map<String, String> requestHeaders = {
       'Content-type': 'application/json',
-      'Accept': 'application/json',
-      'Accept': "*/*",
-      'connection': 'keep-alive',
-      'Accept-Encoding' : 'gzip, deflate, br',
       'alice': 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>'
-  };  
+  };
 
- http.Response response = await http.get(Uri.parse('http://localhost:8080/api/setFans/0/50'), headers: requestHeaders);
+  final backendURL = Uri.parse('http://192.168.0.8:8080/api/setFans/0/50');
+
+ http.Response response = await http.get(backendURL, headers: requestHeaders);
  print(response.body);
 }
 
