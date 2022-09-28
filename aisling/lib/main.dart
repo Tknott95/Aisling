@@ -4,8 +4,11 @@ import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'dart:async';
 
 /* @TODO refactor this http code */
+/* finish apis */
+/* create an actual archi here */
+/* prob just tabs for now */
 import 'package:http/http.dart' as http;
-  
+
 Future<void> setFansFetch(int _gpuIndex, int _val) async {
   /* I use GET instead of POST with auth */
   // Map<String, String> myHeaders = Map<String, String>();
@@ -40,7 +43,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'AISLING',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -53,7 +56,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'AISLING, the mobile mining ctrl'),
     );
   }
 }
