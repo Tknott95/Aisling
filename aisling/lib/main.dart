@@ -6,7 +6,7 @@ import 'dart:async';
 /* @TODO refactor this http code */
 import 'package:http/http.dart' as http;
   
-Future<void> setFansFetch() async {
+Future<void> setFansFetch(int _gpuIndex, int _val) async {
   /* I use GET instead of POST with auth */
   // Map<String, String> myHeaders = Map<String, String>();
   // myHeaders ['alice'] = 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>';
@@ -17,7 +17,7 @@ Future<void> setFansFetch() async {
       'alice': 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>'
   };
 
-  final backendURL = Uri.parse('http://192.168.0.8:8080/api/setFans/0/50');
+  final backendURL = Uri.parse('http://192.168.0.8:8080/api/setFans/$_gpuIndex/$_val');
 
  http.Response response = await http.get(backendURL, headers: requestHeaders);
  print(response.body);
@@ -192,7 +192,7 @@ class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
                   ),
                   onChange: (double value) {
                     // nvidia_set_graphics_clock(gpuIndex, value.round());
-                    // setFansFetch();
+                    setFansFetch(gpuIndex, value.round());
                   }
                 ),
               ],
