@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'AISLING, the mobile mining ctrl'),
+      home: const MyHomePage(title: 'AISLING the mobile mining ctrl'),
     );
   }
 }
