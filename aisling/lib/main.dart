@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:aisling/screens/graphics/graphics.screen.dart';
+import 'package:aisling/screens/home/home.screen.dart';
 
-import 'package:aisling/widgets/graphics/graphics.widget.dart';
 
 import 'dart:async';
 
@@ -30,10 +31,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'AISLING',
       initialRoute: '/',
-      routes: {
-        '/': (context) => const MyHomePage(title: 'the mobile mining ctrl'),
-        '/graphics': (context) => const SliderWidgetGraphics(),
-      },
+      // routes: {
+      //   '/': (context) => const MyHomePage(title: 'the mobile mining ctrl'),
+      //   '/graphics': (context) => const GraphicsScreen(/*title: 'graphics'*/),
+      // },
+      /* ROUTES ARE UGLY WHEN THEY SWITCH SCREEN */
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -46,85 +48,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      // home: const MyHomePage(title: 'the mobile mining ctrl'),
+      home: HomeScreen(title: 'the mobile mining ctrl'),
     );
   }
 }
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            // const Text(
-            //   'hehehehehehehehe',
-            // ),
-            // Text(
-            //   'Set Clocks',
-            //   style: Theme.of(context).textTheme.headline4,
-            // ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                SliderWidgetGraphics(gpuIndex: 0),
-                SizedBox(width: 5),
-                SliderWidgetGraphics(gpuIndex: 1),
-              ],
-            ), 
-          ],
-        ),
-      ),// This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
-
