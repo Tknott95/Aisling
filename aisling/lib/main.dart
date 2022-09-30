@@ -29,6 +29,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'AISLING',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MyHomePage(title: 'the mobile mining ctrl'),
+        '/graphics': (context) => const SliderWidgetGraphics(),
+      },
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -41,7 +46,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'the mobile mining ctrl'),
+      // home: const MyHomePage(title: 'the mobile mining ctrl'),
     );
   }
 }
