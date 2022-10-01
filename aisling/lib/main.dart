@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:aisling/screens/graphics/graphics.screen.dart';
 import 'package:aisling/screens/home/home.screen.dart';
 
+import 'package:go_router/go_router.dart';
+
 
 import 'dart:async';
 
@@ -13,7 +15,7 @@ import 'dart:async';
 
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 
   // setFansFetch();
   // Map<String, String> myHeaders = Map<String, String>();
@@ -23,12 +25,47 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+   MyApp({Key? key}) : super(key: key);
+
+  // final GoRouter _router = GoRouter(
+  //   routes: <GoRoute>[
+  //     GoRoute(
+  //       path: '/',
+  //       builder: (BuildContext context, GoRouterState state) {
+  //         return const GraphicsScreen();
+  //       },
+  //       routes: <GoRoute>[
+  //         GoRoute(
+  //           path: '/graphics',
+  //           builder: (BuildContext context, GoRouterState state) => 
+  //             GraphicsScreen(),
+  //         ),
+  //       ],
+  //     ),
+  //   ],
+  // );
+  final GoRouter _router = GoRouter(
+    routes: <GoRoute>[
+      GoRoute(
+        path: '/',
+        builder: (BuildContext context, GoRouterState state) => HomeScreen(title: 'Home Screen'),
+      ),
+        // GoRoute(
+        //   path: '/b',
+        //   builder: (BuildContext context, GoRouterState state) {
+        //     return GraphicsScreen();
+        //   },
+        // ),
+      ],
+  );
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context) => MaterialApp.router(
+      // routerConfig: _router,
+      routeInformationProvider: _router.routeInformationProvider,
+      routeInformationParser: _router.routeInformationParser,
+      routerDelegate: _router.routerDelegate,
       title: 'AISLING',
       // initialRoute: '/',
       // routes: {
@@ -36,19 +73,21 @@ class MyApp extends StatelessWidget {
       //   '/graphics': (context) => const GraphicsScreen(/*title: 'graphics'*/),
       // },
       /* ROUTES ARE UGLY WHEN THEY SWITCH SCREEN */
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: HomeScreen(title: 'the mobile mining ctrl'),
+      // theme: ThemeData(
+      //   // This is the theme of your application.
+      //   //
+      //   // Try running your application with "flutter run". You'll see the
+      //   // application has a blue toolbar. Then, without quitting the app, try
+      //   // changing the primarySwatch below to Colors.green and then invoke
+      //   // "hot reload" (press "r" in the console where you ran "flutter run",
+      //   // or simply save your changes to "hot reload" in a Flutter IDE).
+      //   // Notice that the counter didn't reset back to zero; the application
+      //   // is not restarted.
+      //   primarySwatch: Colors.blue,
+      // ),
+      // home: HomeScreen(title: 'the mobile mining ctrl'),
     );
-  }
+
+
+  
 }
