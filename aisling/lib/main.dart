@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'AISLING',
-      initialRoute: '/',
+      // initialRoute: '/',
       // routes: {
       //   '/': (context) => const MyHomePage(title: 'the mobile mining ctrl'),
       //   '/graphics': (context) => const GraphicsScreen(/*title: 'graphics'*/),
