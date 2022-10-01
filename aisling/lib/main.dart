@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:aisling/screens/graphics/graphics.screen.dart';
 import 'package:aisling/screens/home/home.screen.dart';
+import 'package:aisling/screens/graphics/graphics.screen.dart';
+import 'package:aisling/screens/fans/fans.screen.dart';
 
 import 'package:go_router/go_router.dart';
 
@@ -13,6 +14,10 @@ import 'dart:async';
 /* create an actual archi here */
 /* prob just tabs for now */
 
+final GlobalKey<NavigatorState> _rootNavigatorKey =
+ GlobalKey<NavigatorState>(debugLabel: 'root');
+final GlobalKey<NavigatorState> _shellNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'shell');
 
 void main() {
   runApp(MyApp());
@@ -29,50 +34,65 @@ class MyApp extends StatelessWidget {
 
   // final GoRouter _router = GoRouter(
   //   routes: <GoRoute>[
-  //     GoRoute(
-  //       path: '/',
-  //       builder: (BuildContext context, GoRouterState state) {
-  //         return const GraphicsScreen();
-  //       },
-  //       routes: <GoRoute>[
-  //         GoRoute(
-  //           path: '/graphics',
-  //           builder: (BuildContext context, GoRouterState state) => 
-  //             GraphicsScreen(),
-  //         ),
-  //       ],
-  //     ),
+      // GoRoute(
+      //   path: '/',
+      //   builder: (BuildContext context, GoRouterState state) {
+      //     return const GraphicsScreen();
+      //   },
+      //   routes: <GoRoute>[
+      //     GoRoute(
+      //       path: '/graphics',
+      //       builder: (BuildContext context, GoRouterState state) => 
+      //         GraphicsScreen(),
+      //     ),
+      //   ],
+      // ),
   //   ],
   // );
 
-  final GlobalKey<NavigatorState> _rootNavigatorKey =
-    GlobalKey<NavigatorState>();
+  // final GlobalKey<NavigatorState> _rootNavigatorKey =
+  //   GlobalKey<NavigatorState>();
+
+
 
   final GoRouter _router = GoRouter(
-    routes: [
-      GoRoute(
-        path: '/',
-        builder: (BuildContext context, GoRouterState state) => HomeScreen(title: 'Home Screen'),
-
-        routes: <RouteBase>[
+    navigatorKey: _rootNavigatorKey,
+    initialLocation: '/home',
+    routes: <RouteBase>[
+      ShellRoute(
+        navigatorKey: _shellNavigatorKey,
+        builder: (context, state, child) {
+          return HomeScreen(child: child, title: 'Home Screen');
+        },
+        routes: <RouteBase> [
           GoRoute(
-            path: 'graphics',
-            builder: (BuildContext context, GoRouterState state) {
-              return GraphicsScreen();
-            },
+            path: '/home',
+            name: 'home',
+            builder: (BuildContext context, GoRouterState state) => const GraphicsScreen(),
+
+            routes: <RouteBase>[
+              GoRoute(          
+                parentNavigatorKey: _rootNavigatorKey,
+                name: 'graphics',
+                path: 'graphics',
+                builder: (BuildContext context, GoRouterState state) {
+                  return const GraphicsScreen();
+                },
+              ),
+            ]
           ),
         ]
-      ),
+      )
     ],
   );
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) => MaterialApp.router(
-      routerConfig: _router,
-      // routeInformationProvider: _router.routeInformationProvider,
-      // routeInformationParser: _router.routeInformationParser,
-      // routerDelegate: _router.routerDelegate,
+      // routerConfig: _router,
+      routeInformationProvider: _router.routeInformationProvider,
+      routeInformationParser: _router.routeInformationParser,
+      routerDelegate: _router.routerDelegate,
       title: 'AISLING',
       // initialRoute: '/',
       // routes: {

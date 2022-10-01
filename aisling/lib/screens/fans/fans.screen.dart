@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class GraphicsScreen extends StatelessWidget {
-  const GraphicsScreen({super.key});
+class FansScreen extends StatelessWidget {
+  const FansScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Graphics Screen'),
+      ),
+      body: Center(
         child: ElevatedButton(
           // Within the `FirstScreen` widget
           onPressed: () {
@@ -15,6 +19,7 @@ class GraphicsScreen extends StatelessWidget {
           },
           child: const Text('Launch screen'),
         ),
-      );
+      ),
+    );
   }
 }
