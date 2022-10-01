@@ -144,9 +144,9 @@ class _HomeScreenState extends State<HomeScreen> {
         autoClose: false,
         sheetChild: Column(
           children: [
-            SliderWidgetGraphics(gpuIndex: 0),
-            SizedBox(width: 5),
-            SliderWidgetGraphics(gpuIndex: 1),
+            // SliderWidgetGraphics(gpuIndex: 0),
+            // SizedBox(width: 5),
+            // SliderWidgetGraphics(gpuIndex: 1),
           ]
         ),
         // Center(
