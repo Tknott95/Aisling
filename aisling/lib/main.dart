@@ -44,19 +44,26 @@ class MyApp extends StatelessWidget {
   //     ),
   //   ],
   // );
+
+  final GlobalKey<NavigatorState> _rootNavigatorKey =
+    GlobalKey<NavigatorState>();
+
   final GoRouter _router = GoRouter(
-    routes: <GoRoute>[
+    routes: [
       GoRoute(
         path: '/',
         builder: (BuildContext context, GoRouterState state) => HomeScreen(title: 'Home Screen'),
+
+        routes: <RouteBase>[
+          GoRoute(
+            path: 'graphics',
+            builder: (BuildContext context, GoRouterState state) {
+              return GraphicsScreen();
+            },
+          ),
+        ]
       ),
-        // GoRoute(
-        //   path: '/b',
-        //   builder: (BuildContext context, GoRouterState state) {
-        //     return GraphicsScreen();
-        //   },
-        // ),
-      ],
+    ],
   );
 
   // This widget is the root of your application.
@@ -73,18 +80,18 @@ class MyApp extends StatelessWidget {
       //   '/graphics': (context) => const GraphicsScreen(/*title: 'graphics'*/),
       // },
       /* ROUTES ARE UGLY WHEN THEY SWITCH SCREEN */
-      // theme: ThemeData(
-      //   // This is the theme of your application.
-      //   //
-      //   // Try running your application with "flutter run". You'll see the
-      //   // application has a blue toolbar. Then, without quitting the app, try
-      //   // changing the primarySwatch below to Colors.green and then invoke
-      //   // "hot reload" (press "r" in the console where you ran "flutter run",
-      //   // or simply save your changes to "hot reload" in a Flutter IDE).
-      //   // Notice that the counter didn't reset back to zero; the application
-      //   // is not restarted.
-      //   primarySwatch: Colors.blue,
-      // ),
+      theme: ThemeData(
+        // This is the theme of your application.
+        //
+        // Try running your application with "flutter run". You'll see the
+        // application has a blue toolbar. Then, without quitting the app, try
+        // changing the primarySwatch below to Colors.green and then invoke
+        // "hot reload" (press "r" in the console where you ran "flutter run",
+        // or simply save your changes to "hot reload" in a Flutter IDE).
+        // Notice that the counter didn't reset back to zero; the application
+        // is not restarted.
+        primarySwatch: Colors.blue,
+      ),
       // home: HomeScreen(title: 'the mobile mining ctrl'),
     );
 

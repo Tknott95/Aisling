@@ -7,6 +7,8 @@ import 'dart:core';
 
 import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
 
+import 'package:go_router/go_router.dart';
+
 
 /* this bottom_navigation_bar wont let me over-modularize. Need to pull it back out */
 
@@ -75,6 +77,16 @@ class _HomeScreenState extends State<HomeScreen> {
             SliderWidgetGraphics(gpuIndex: 0),
             SizedBox(width: 5),
             SliderWidgetGraphics(gpuIndex: 1),
+            Center(
+        child: ElevatedButton(
+          // Within the `FirstScreen` widget
+          onPressed: () {
+            // Navigate to the second screen using a named route.
+            GoRouter.of(context).go('/graphics');
+          },
+          child: const Text('graphics'),
+        ),
+      ),
             // // const Text(
             // //   'hehehehehehehehe',
             // // ),

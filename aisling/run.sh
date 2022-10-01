@@ -1,4 +1,4 @@
 #!/bin/sh
 
-flutter run
+flutter run --enable-software-rendering
 
