@@ -32,6 +32,9 @@ class NavigationWrapper extends StatelessWidget {
     if (location.startsWith('/c')) {
       return 2;
     }
+    if (location.startsWith('/d')) {
+      return 3;
+    }
     return 0;
   }
 
@@ -44,7 +47,10 @@ class NavigationWrapper extends StatelessWidget {
         GoRouter.of(context).go('/fans');
         break;
       case 2:
-        GoRouter.of(context).go('/c');
+        GoRouter.of(context).go('/graphics');
+        break;
+       case 3:
+        GoRouter.of(context).go('/d');
         break;
     }
   }
@@ -237,20 +243,28 @@ class NavigationWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: child,
+      backgroundColor: const Color.fromRGBO(254,241,214, 1),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'A Screen',
+            label: 'Graphics',
+            backgroundColor: Colors.grey,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'B Screen',
+            icon: Icon(Icons.ac_unit),
+            label: 'Fans',
+            backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notification_important_rounded),
-            label: 'C Screen',
+            icon: Icon(Icons.auto_awesome),
+            label: 'Graohics REAL',
           ),
+            BottomNavigationBarItem(
+            icon: Icon(Icons.audiotrack),
+            label: 'D Screen',
+          ),
+   
         ],
         currentIndex: _calculateSelectedIndex(context),
         onTap: (int idx) => _onItemTapped(idx, context),

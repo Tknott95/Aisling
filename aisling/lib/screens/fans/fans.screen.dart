@@ -9,6 +9,8 @@ class FansScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SliderWidgetFans(gpuIndex: 0),
             SizedBox(width: 5),

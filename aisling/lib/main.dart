@@ -54,7 +54,14 @@ class MyApp extends StatelessWidget {
   // final GlobalKey<NavigatorState> _rootNavigatorKey =
   //   GlobalKey<NavigatorState>();
 
-
+  /* ICONS - https://fonts.google.com/icons?selected=Material+Icons
+  clocking - Thunderstorm ?
+  temp - dew_point
+  misc - severe_cold
+  fans - cyclone - ac_unit
+  graphics - auto_awesome
+  memory clock - memory
+  */
 
   final GoRouter _router = GoRouter(
     navigatorKey: _rootNavigatorKey,

@@ -9,6 +9,8 @@ class GraphicsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SliderWidgetGraphics(gpuIndex: 0),
             SizedBox(width: 5),
