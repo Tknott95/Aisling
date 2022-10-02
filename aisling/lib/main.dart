@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
 
   final GoRouter _router = GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: '/',
+    initialLocation: '/graphics',
     routes: <RouteBase>[
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
@@ -67,12 +67,12 @@ class MyApp extends StatelessWidget {
         },
         routes: <RouteBase> [
           GoRoute(
-            path: '/',
+            path: '/graphics',
             name: 'a',
             builder: (BuildContext context, GoRouterState state) => const GraphicsScreen(),
           ),
           GoRoute(
-           path: '/b',
+           path: '/fans',
            name: 'b',
            builder: (BuildContext context, GoRouterState state) => const FansScreen(),
           )

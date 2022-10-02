@@ -14,7 +14,7 @@ Future<void> setFansFetch(int _gpuIndex, int _val) async {
       'alice': 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>'
   };
 
-  final backendURL = Uri.parse('http://192.168.0.8:8080/api/setFans/$_gpuIndex/$_val');
+  final backendURL = Uri.parse('http://192.168.0.8:8080/api/setGraphics/$_gpuIndex/$_val');
 
  http.Response response = await http.get(backendURL, headers: requestHeaders);
  print(response.body);

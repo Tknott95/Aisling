@@ -23,10 +23,10 @@ class NavigationWrapper extends StatelessWidget {
     static int _calculateSelectedIndex(BuildContext context) {
     final GoRouter route = GoRouter.of(context);
     final String location = route.location;
-    if (location.startsWith('/a')) {
+    if (location.startsWith('/graphics')) {
       return 0;
     }
-    if (location.startsWith('/b')) {
+    if (location.startsWith('/fans')) {
       return 1;
     }
     if (location.startsWith('/c')) {
@@ -38,10 +38,10 @@ class NavigationWrapper extends StatelessWidget {
   void _onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
-        GoRouter.of(context).go('/a');
+        GoRouter.of(context).go('/graphics');
         break;
       case 1:
-        GoRouter.of(context).go('/b');
+        GoRouter.of(context).go('/fans');
         break;
       case 2:
         GoRouter.of(context).go('/c');
