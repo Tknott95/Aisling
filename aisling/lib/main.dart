@@ -61,6 +61,7 @@ class MyApp extends StatelessWidget {
   fans - cyclone - ac_unit
   graphics - auto_awesome
   memory clock - memory - sd_storage
+  clocking type - electric_bolt
   */
 
   final GoRouter _router = GoRouter(
