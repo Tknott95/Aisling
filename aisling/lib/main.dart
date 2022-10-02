@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:aisling/screens/home/home.screen.dart';
+import 'package:aisling/wrappers/navigation/navigation.wrapper.dart';
 import 'package:aisling/screens/graphics/graphics.screen.dart';
 import 'package:aisling/screens/fans/fans.screen.dart';
 
@@ -57,30 +58,35 @@ class MyApp extends StatelessWidget {
 
   final GoRouter _router = GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: '/home',
+    initialLocation: '/',
     routes: <RouteBase>[
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
         builder: (context, state, child) {
-          return HomeScreen(child: child, title: 'Home Screen');
+          return NavigationWrapper(child: child, title: 'Home Screen');
         },
         routes: <RouteBase> [
           GoRoute(
-            path: '/home',
-            name: 'home',
+            path: '/',
+            name: 'a',
             builder: (BuildContext context, GoRouterState state) => const GraphicsScreen(),
-
-            routes: <RouteBase>[
-              GoRoute(          
-                parentNavigatorKey: _rootNavigatorKey,
-                name: 'graphics',
-                path: 'graphics',
-                builder: (BuildContext context, GoRouterState state) {
-                  return const GraphicsScreen();
-                },
-              ),
-            ]
           ),
+          GoRoute(
+           path: '/b',
+           name: 'b',
+           builder: (BuildContext context, GoRouterState state) => const FansScreen(),
+          )
+            // routes: <RouteBase>[
+            //   GoRoute(          
+            //     parentNavigatorKey: _rootNavigatorKey,
+            //     name: 'graphics',
+            //     path: 'graphics',
+            //     builder: (BuildContext context, GoRouterState state) {
+            //       return const GraphicsScreen();
+            //     },
+            //   ),
+            // ]
+          //),
         ]
       )
     ],

@@ -25,7 +25,7 @@
 //           mainAxisAlignment: MainAxisAlignment.center,
 //           children: const [
 //             Text(
-//               "Riggy smells",
+//               "x72 smells",
 //               style: TextStyle(
 //                 color: Colors.red,
 //                 fontSize: 20,

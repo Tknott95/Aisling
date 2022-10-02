@@ -6,20 +6,15 @@ class FansScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Graphics Screen'),
-      ),
-      body: Center(
+    return Center(
         child: ElevatedButton(
           // Within the `FirstScreen` widget
           onPressed: () {
             // Navigate to the second screen using a named route.
-            context.goNamed('home');
+            context.goNamed('a');
           },
-          child: const Text('Launch screen'),
+          child: const Text('FANS screen'),
         ),
-      ),
-    );
+      );
   }
 }

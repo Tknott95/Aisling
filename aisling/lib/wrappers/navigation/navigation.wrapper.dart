@@ -12,12 +12,8 @@ import 'package:go_router/go_router.dart';
 
 /* this bottom_navigation_bar wont let me over-modularize. Need to pull it back out */
 
-enum CurrentScreen {
- graphics, fans
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({
+class NavigationWrapper extends StatelessWidget {
+  const NavigationWrapper({
     required this.child,
     Key? key,
     required this.title}) : super(key: key);
