@@ -4,6 +4,9 @@ import 'package:aisling/screens/home/home.screen.dart';
 import 'package:aisling/wrappers/navigation/navigation.wrapper.dart';
 import 'package:aisling/screens/graphics/graphics.screen.dart';
 import 'package:aisling/screens/fans/fans.screen.dart';
+import 'package:aisling/screens/power_draw/power_draw.screen.dart';
+
+
 
 import 'package:go_router/go_router.dart';
 
@@ -83,7 +86,18 @@ class MyApp extends StatelessWidget {
            path: '/fans',
            name: 'fans',
            builder: (BuildContext context, GoRouterState state) => const FansScreen(),
-          )
+          ),
+          GoRoute(
+            path: '/power-draw',
+            name: 'power-draw',
+            builder: (BuildContext context, GoRouterState state) => const PowerDrawScreen(),
+          ),
+          // GoRoute(
+          //  path: '/fans',
+          //  name: 'fans',
+          //  builder: (BuildContext context, GoRouterState state) => const FansScreen(),
+          // ),
+
             // routes: <RouteBase>[
             //   GoRoute(          
             //     parentNavigatorKey: _rootNavigatorKey,

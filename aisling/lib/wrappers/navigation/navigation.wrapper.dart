@@ -29,7 +29,7 @@ class NavigationWrapper extends StatelessWidget {
     if (location.startsWith('/fans')) {
       return 1;
     }
-    if (location.startsWith('/c')) {
+    if (location.startsWith('/power-draw')) {
       return 2;
     }
     if (location.startsWith('/d')) {
@@ -47,7 +47,7 @@ class NavigationWrapper extends StatelessWidget {
         GoRouter.of(context).go('/fans');
         break;
       case 2:
-        GoRouter.of(context).go('/graphics');
+        GoRouter.of(context).go('/power-draw');
         break;
        case 3:
         GoRouter.of(context).go('/d');
