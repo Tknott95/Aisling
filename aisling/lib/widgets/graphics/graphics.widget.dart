@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
-Future<void> setFansFetch(int _gpuIndex, int _val) async {
+Future<void> setGraphicsClockFetch(int _gpuIndex, int _val) async {
   /* I use GET instead of POST with auth */
   // Map<String, String> myHeaders = Map<String, String>();
   // myHeaders ['alice'] = 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>';
 
-   print("\n SETTING FANS");
+   print("\n SETTING GRAPHICS CLOCK");
     Map<String, String> requestHeaders = {
       'Content-type': 'application/json',
       'alice': 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>'
@@ -78,8 +78,7 @@ class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
                     ),
                   ),
                   onChange: (double value) {
-                    // nvidia_set_graphics_clock(gpuIndex, value.round());
-                    setFansFetch(gpuIndex, value.round());
+                    setGraphicsClockFetch(gpuIndex, value.round());
                   }
                 ),
               ],
