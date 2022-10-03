@@ -264,6 +264,7 @@ class NavigationWrapper extends StatelessWidget {
             BottomNavigationBarItem(
             icon: Icon(Icons.audiotrack),
             label: 'Temp Thresh',
+            backgroundColor: Colors.green,
           ),
    
         ],
