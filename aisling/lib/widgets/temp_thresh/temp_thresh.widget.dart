@@ -44,7 +44,7 @@ class _SliderWidgetStateTempThresh extends State<SliderWidgetTempThresh> {
     return  Column(
               children: [
                 Text(
-                  'GPU_$gpuIndex GRAPHICS',
+                  'GPU_$gpuIndex TEMP THRESH',
                   style: Theme.of(context).textTheme.headline6,
                   ),
                 SleekCircularSlider(
