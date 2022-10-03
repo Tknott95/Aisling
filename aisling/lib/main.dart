@@ -6,6 +6,7 @@ import 'package:aisling/screens/graphics/graphics.screen.dart';
 import 'package:aisling/screens/fans/fans.screen.dart';
 import 'package:aisling/screens/power_draw/power_draw.screen.dart';
 import 'package:aisling/screens/temp_thresh/temp_thresh.screen.dart';
+import 'package:aisling/screens/home/home.screen.dart';
 
 
 import 'package:go_router/go_router.dart';
@@ -77,6 +78,11 @@ class MyApp extends StatelessWidget {
           return NavigationWrapper(child: child, title: 'Home Screen');
         },
         routes: <RouteBase> [
+          GoRoute(
+            path: '/home',
+            name: 'home',
+            builder: (BuildContext context, GoRouterState state) => const HomeScreen(),
+          ),
           GoRoute(
             path: '/graphics',
             name: 'graphics',
