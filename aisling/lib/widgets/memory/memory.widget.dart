@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
-Future<void> setFansFetch(int _gpuIndex, int _val) async {
+Future<void> setMemoryClockFetch(int _gpuIndex, int _val) async {
   /* I use GET instead of POST with auth */
   // Map<String, String> myHeaders = Map<String, String>();
   // myHeaders ['alice'] = 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>';
 
-   print("\n SETTING FANS");
+   print("\n SETTING MEMORY CLOCK");
     Map<String, String> requestHeaders = {
       'Content-type': 'application/json',
       'alice': 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>'
   };
 
-  final backendURL = Uri.parse('http://192.168.0.8:8080/api/setGraphicsClock/$_gpuIndex/$_val');
+  final backendURL = Uri.parse('http://192.168.0.8:8080/api/setMemoryClock/$_gpuIndex/$_val');
 
  http.Response response = await http.get(backendURL, headers: requestHeaders);
  print(response.body);
@@ -22,15 +22,15 @@ Future<void> setFansFetch(int _gpuIndex, int _val) async {
 
 /* @TODO - copy this function above to fans and then change such for graphics */
 
-class SliderWidgetGraphics extends StatefulWidget {
+class SliderWidgetMemory extends StatefulWidget {
   final gpuIndex;
-  const SliderWidgetGraphics({Key? key, @required this.gpuIndex}) : super(key: key);
+  const SliderWidgetMemory({Key? key, @required this.gpuIndex}) : super(key: key);
 
   @override
-  State<SliderWidgetGraphics> createState() => _SliderWidgetStateGraphics();
+  State<SliderWidgetMemory> createState() => _SliderWidgetStateMemory();
 }
 
-class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
+class _SliderWidgetStateMemory extends State<SliderWidgetMemory> {
   var gpuIndex;
   @override
   void initState() {
@@ -78,8 +78,7 @@ class _SliderWidgetStateGraphics extends State<SliderWidgetGraphics> {
                     ),
                   ),
                   onChange: (double value) {
-                    // nvidia_set_graphics_clock(gpuIndex, value.round());
-                    setFansFetch(gpuIndex, value.round());
+                    setMemoryClockFetch(gpuIndex, value.round());
                   }
                 ),
               ],
