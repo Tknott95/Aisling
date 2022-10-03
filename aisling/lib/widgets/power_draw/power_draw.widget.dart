@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
-Future<void> setPowerDraw(int _gpuIndex, int _val) async {
+Future<void> setPowerDraw(int _gpuIndex, double _val) async {
   /* I use GET instead of POST with auth */
   // Map<String, String> myHeaders = Map<String, String>();
   // myHeaders ['alice'] = 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>';
@@ -78,7 +78,7 @@ class _SliderWidgetStatePowerDraw extends State<SliderWidgetPowerDraw> {
                     ),
                   ),
                   onChange: (double value) {
-                    setPowerDraw(gpuIndex, value.round());
+                    setPowerDraw(gpuIndex, value/*value.round()*/);
                   }
                 ),
               ],
