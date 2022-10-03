@@ -76,12 +76,12 @@ class MyApp extends StatelessWidget {
         routes: <RouteBase> [
           GoRoute(
             path: '/graphics',
-            name: 'a',
+            name: 'graphics',
             builder: (BuildContext context, GoRouterState state) => const GraphicsScreen(),
           ),
           GoRoute(
            path: '/fans',
-           name: 'b',
+           name: 'fans',
            builder: (BuildContext context, GoRouterState state) => const FansScreen(),
           )
             // routes: <RouteBase>[

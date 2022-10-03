@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
-Future<void> setTempThreshFetch(int _gpuIndex, int _val) async {
+Future<void> setPowerDraw(int _gpuIndex, int _val) async {
   /* I use GET instead of POST with auth */
   // Map<String, String> myHeaders = Map<String, String>();
   // myHeaders ['alice'] = 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>';
@@ -14,7 +14,7 @@ Future<void> setTempThreshFetch(int _gpuIndex, int _val) async {
       'alice': 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>'
   };
 
-  final backendURL = Uri.parse('http://192.168.0.8:8080/api/setTempThresh/$_gpuIndex/$_val');
+  final backendURL = Uri.parse('http://192.168.0.8:8080/api/setPowerDraw/$_gpuIndex/$_val');
 
  http.Response response = await http.get(backendURL, headers: requestHeaders);
  print(response.body);
@@ -22,15 +22,15 @@ Future<void> setTempThreshFetch(int _gpuIndex, int _val) async {
 
 /* @TODO - copy this function above to fans and then change such for graphics */
 
-class SliderWidgetTempThresh extends StatefulWidget {
+class SliderWidgetPowerDraw extends StatefulWidget {
   final gpuIndex;
-  const SliderWidgetTempThresh({Key? key, @required this.gpuIndex}) : super(key: key);
+  const SliderWidgetPowerDraw({Key? key, @required this.gpuIndex}) : super(key: key);
 
   @override
-  State<SliderWidgetTempThresh> createState() => _SliderWidgetStateTempThresh();
+  State<SliderWidgetPowerDraw> createState() => _SliderWidgetStatePowerDraw();
 }
 
-class _SliderWidgetStateTempThresh extends State<SliderWidgetTempThresh> {
+class _SliderWidgetStatePowerDraw extends State<SliderWidgetPowerDraw> {
   var gpuIndex;
   @override
   void initState() {
@@ -44,7 +44,7 @@ class _SliderWidgetStateTempThresh extends State<SliderWidgetTempThresh> {
     return  Column(
               children: [
                 Text(
-                  'GPU_$gpuIndex GRAPHICS',
+                  'GPU_$gpuIndex POWER DRAW',
                   style: Theme.of(context).textTheme.headline6,
                   ),
                 SleekCircularSlider(
@@ -78,7 +78,7 @@ class _SliderWidgetStateTempThresh extends State<SliderWidgetTempThresh> {
                     ),
                   ),
                   onChange: (double value) {
-                    setTempThreshFetch(gpuIndex, value.round());
+                    setPowerDraw(gpuIndex, value.round());
                   }
                 ),
               ],
