@@ -259,6 +259,7 @@ class NavigationWrapper extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Icon(Icons.auto_awesome),
             label: 'Power Draw',
+            backgroundColor: Colors.red,
           ),
             BottomNavigationBarItem(
             icon: Icon(Icons.audiotrack),

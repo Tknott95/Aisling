@@ -13,7 +13,7 @@ class FansScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SliderWidgetFans(gpuIndex: 0),
-            SizedBox(width: 5),
+            SizedBox(height: 50),
             SliderWidgetFans(gpuIndex: 1),
           ]
         ) 

@@ -13,7 +13,7 @@ class GraphicsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SliderWidgetGraphics(gpuIndex: 0),
-            SizedBox(width: 5),
+            SizedBox(height: 50),
             SliderWidgetGraphics(gpuIndex: 1),
           ]
         ) 
