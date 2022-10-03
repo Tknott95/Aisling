@@ -32,7 +32,7 @@ class NavigationWrapper extends StatelessWidget {
     if (location.startsWith('/power-draw')) {
       return 2;
     }
-    if (location.startsWith('/d')) {
+    if (location.startsWith('/temp-thresh')) {
       return 3;
     }
     return 0;
@@ -50,7 +50,7 @@ class NavigationWrapper extends StatelessWidget {
         GoRouter.of(context).go('/power-draw');
         break;
        case 3:
-        GoRouter.of(context).go('/d');
+        GoRouter.of(context).go('/temp-thresh');
         break;
     }
   }
@@ -258,11 +258,11 @@ class NavigationWrapper extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.auto_awesome),
-            label: 'Graohics REAL',
+            label: 'Power Draw',
           ),
             BottomNavigationBarItem(
             icon: Icon(Icons.audiotrack),
-            label: 'D Screen',
+            label: 'Temp Thresh',
           ),
    
         ],
