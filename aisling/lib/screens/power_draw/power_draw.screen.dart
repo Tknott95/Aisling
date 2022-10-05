@@ -6,7 +6,7 @@ import 'package:aisling/widgets/power_draw/power_draw.widget.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-Future<String> fetchPowerDrawData(int _gpuIndex) async {
+Future<int> fetchPowerDrawData(int _gpuIndex) async {
   /* I use GET instead of POST with auth */
   // Map<String, String> myHeaders = Map<String, String>();
   // myHeaders ['alice'] = 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>';
@@ -31,7 +31,7 @@ Future<String> fetchPowerDrawData(int _gpuIndex) async {
   int _powerDrawVal = int.parse(json.decode(response.body)['gpuTemp'][_gpuIndex]['gpuVal']);
 
   // return "$fanSpeed";
-  return "${_powerDrawVal}W";
+  return _powerDrawVal;
 }
 
 class PowerDrawScreen extends StatelessWidget {
@@ -60,12 +60,12 @@ class PowerDrawScreen extends StatelessWidget {
                  FutureBuilder(
                   future: fetchPowerDrawData(0), 
                   /*fetchFansData(0)*/
-                  builder: (BuildContext context, AsyncSnapshot<String> text) {
+                  builder: (BuildContext context, AsyncSnapshot<int> text) {
                     if (text.connectionState == ConnectionState.waiting) {
                       return new Text('loading data..');
                       // new Text(text.data!);
                     } else return new Text(
-                      text.data,
+                      text.data.toString()+"W",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           height: 3, fontSize: 30 
@@ -77,12 +77,12 @@ class PowerDrawScreen extends StatelessWidget {
                 FutureBuilder(
                   future: fetchPowerDrawData(1), 
                   /*fetchFansData(0)*/
-                  builder: (BuildContext context, AsyncSnapshot<String> text) {
+                  builder: (BuildContext context, AsyncSnapshot<int> text) {
                     if (text.connectionState == ConnectionState.waiting) {
                       return new Text('loading data..');
                       // new Text(text.data!);
                     } else return new Text(
-                      text.data,
+                      text.data.toString()+"W",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           height: 3, fontSize: 30 
