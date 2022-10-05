@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
 
   final GoRouter _router = GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: '/graphics',
+    initialLocation: '/graphicsClock',
     routes: <RouteBase>[
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
