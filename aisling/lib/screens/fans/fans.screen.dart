@@ -8,7 +8,7 @@ import 'package:aisling/widgets/fans/fans.widget.dart';
 import 'package:http/http.dart' as http;
 
 
-Future<String> fetchFansData(int _gpuIndex) async {
+Future<int> fetchFansData(int _gpuIndex) async {
   /* I use GET instead of POST with auth */
   // Map<String, String> myHeaders = Map<String, String>();
   // myHeaders ['alice'] = 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>';
@@ -32,7 +32,8 @@ Future<String> fetchFansData(int _gpuIndex) async {
 
   int fanSpeed = int.parse(json.decode(response.body)['fans'][_gpuIndex]['gpuVal']);
 
-  return "$fanSpeed";
+  // return "$fanSpeed";
+  return fanSpeed;
 }
 
 
@@ -46,27 +47,50 @@ class FansScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Text(
+              "FAN SPEED",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                height: 1, fontSize: 30 
+              )
+            ),
             /* pull these future builders into own widget */
              Row(
-               children: [
+              mainAxisAlignment: MainAxisAlignment.center,
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+         
                  FutureBuilder(
                   future: fetchFansData(0), 
                   /*fetchFansData(0)*/
-                  builder: (BuildContext context, AsyncSnapshot<String> text) {
+                  builder: (BuildContext context, AsyncSnapshot<int> text) {
                     if (text.connectionState == ConnectionState.waiting) {
                       return new Text('loading data..');
                       // new Text(text.data!);
-                    } else return new Text(text.data!.toString());
+                    } else return new Text(
+                      text.data!.toString()+"%",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          height: 3, fontSize: 30 
+                        )
+                      );
                   }
                 ),
+                SizedBox(width: 50),
                 FutureBuilder(
                   future: fetchFansData(1), 
                   /*fetchFansData(0)*/
-                  builder: (BuildContext context, AsyncSnapshot<String> text) {
+                  builder: (BuildContext context, AsyncSnapshot<int> text) {
                     if (text.connectionState == ConnectionState.waiting) {
                       return new Text('loading data..');
                       // new Text(text.data!);
-                    } else return new Text(text.data!.toString());
+                    } else return new Text(
+                      text.data!.toString()+"%",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          height: 3, fontSize: 30 
+                        )
+                      );
                   }
                 ),
                ]
