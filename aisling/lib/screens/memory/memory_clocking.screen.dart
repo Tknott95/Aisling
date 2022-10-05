@@ -23,14 +23,12 @@ Future<int> fetchMemClockData(int _gpuIndex) async {
   /* @TODO - build models to consume for code instantiation */
   print(response.body);
   print(json.decode(response.body));
-  print(json.decode(response.body)['gpuTemp']);
-  print(json.decode(response.body)['gpuTemp'][_gpuIndex]['gpuVal']);
-  // print(json.decode(response.body)['fans'][1]['gpuVal']);
+  print(json.decode(response.body)['memoryClock']);
+  print(json.decode(response.body)['memoryClock'][_gpuIndex]['gpuVal']);
 
-  int _powerDrawVal = int.parse(json.decode(response.body)['memoryClock'][_gpuIndex]['gpuVal']);
+  int _memClockVal = int.parse(json.decode(response.body)['memoryClock'][_gpuIndex]['gpuVal']);
 
-  // return "$fanSpeed";
-  return _powerDrawVal;
+  return _memClockVal;
 }
 
 class MemoryClockingScreen extends StatelessWidget {

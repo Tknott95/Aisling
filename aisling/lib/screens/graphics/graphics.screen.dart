@@ -6,7 +6,7 @@ import 'package:aisling/widgets/graphics/graphics.widget.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-Future<int> fetchMemClockData(int _gpuIndex) async {
+Future<int> fetchGraphClockData(int _gpuIndex) async {
   /* I use GET instead of POST with auth */
   // Map<String, String> myHeaders = Map<String, String>();
   // myHeaders ['alice'] = 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>';
@@ -17,21 +17,19 @@ Future<int> fetchMemClockData(int _gpuIndex) async {
     'alice': 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>'
   };
 
-  final backendURL = Uri.parse('http://192.168.0.8:8080/api/get/memoryClock');
+  final backendURL = Uri.parse('http://192.168.0.8:8080/api/get/graphicsClock');
 
   http.Response response = await http.get(backendURL, headers: requestHeaders);
  
   /* @TODO - build models to consume for code instantiation */
   print(response.body);
   print(json.decode(response.body));
-  print(json.decode(response.body)['gpuTemp']);
-  print(json.decode(response.body)['gpuTemp'][_gpuIndex]['gpuVal']);
-  // print(json.decode(response.body)['fans'][1]['gpuVal']);
+  print(json.decode(response.body)['graphicsClock']);
+  print(json.decode(response.body)['graphicsClock'][_gpuIndex]['gpuVal']);
 
-  int _powerDrawVal = int.parse(json.decode(response.body)['memoryClock'][_gpuIndex]['gpuVal']);
+  int _graphClockVal = int.parse(json.decode(response.body)['graphicsClock'][_gpuIndex]['gpuVal']);
 
-  // return "$fanSpeed";
-  return _powerDrawVal;
+  return _graphClockVal;
 }
 
 class GraphicsScreen extends StatelessWidget {
