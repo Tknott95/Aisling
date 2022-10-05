@@ -91,7 +91,7 @@ class MyApp extends StatelessWidget {
           GoRoute(
            path: '/fans',
            name: 'fans',
-           builder: (BuildContext context, GoRouterState state) => const FansScreen(),
+           builder: (BuildContext context, GoRouterState state) => FansScreen(),
           ),
           GoRoute(
             path: '/power-draw',

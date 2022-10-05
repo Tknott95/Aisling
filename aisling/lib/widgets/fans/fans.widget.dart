@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'dart:convert';
+import 'dart:async';
 
 import 'package:http/http.dart' as http;
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
@@ -22,7 +23,7 @@ Future<void> setFansFetch(int _gpuIndex, int _val) async {
  print(response.body);
 }
 
-Future<int> fetchFansData(int _gpuIndex) async {
+Future<String> fetchFansData(int _gpuIndex) async {
   /* I use GET instead of POST with auth */
   // Map<String, String> myHeaders = Map<String, String>();
   // myHeaders ['alice'] = 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>';
@@ -46,8 +47,15 @@ Future<int> fetchFansData(int _gpuIndex) async {
 
   int fanSpeed = int.parse(json.decode(response.body)['fans'][_gpuIndex]['gpuVal']);
 
-  return fanSpeed;
+  return "$fanSpeed";
 }
+
+Future<String> testThis() async {
+  await Future.delayed(Duration(seconds: 3));
+
+  return "tested";
+}
+
 
 
 /* @TODO - copy this function above to fans and then change such for graphics */
@@ -63,11 +71,15 @@ class SliderWidgetFans extends StatefulWidget {
 class _SliderWidgetStateFans extends State<SliderWidgetFans> {
   var gpuIndex;
 
+  var d1;
+  var d2;
+
   void fetchData() async {
 
-    await fetchFansData(0);
-    await fetchFansData(1);
+    d1 = await fetchFansData(0);
+    d2 = await fetchFansData(1);
   }
+
 
 
   
@@ -87,8 +99,17 @@ class _SliderWidgetStateFans extends State<SliderWidgetFans> {
   Widget build(BuildContext context) {
     return  Column(
               children: [
+                FutureBuilder(
+                  future: testThis(), 
+                  /*fetchFansData(0)*/
+                  builder: (context, AsyncSnapshot<String> text) {
+                    if (text.data != null) {
+                      return new Text(text.data!);
+                    } else return new Text('backend api down');
+                  }
+                ),
                 Text(
-                  'GPU_$gpuIndex FANS',
+                  'GPU_$gpuIndex FANS ',
                   style: Theme.of(context).textTheme.headline6,
                   ),
                 SleekCircularSlider(
