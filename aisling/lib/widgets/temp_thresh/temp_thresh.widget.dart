@@ -58,12 +58,12 @@ class _SliderWidgetStateTempThresh extends State<SliderWidgetTempThresh> {
                       )
                     ),
                   appearance: CircularSliderAppearance(
-                    size: 85,
+                    size: 305,
                     customWidths: CustomSliderWidths(
                       //handlerSize: 20,
-                      trackWidth: 1,
+                      trackWidth: 83,
                       //shadowWidth: 0,
-                      progressBarWidth: 11,
+                      progressBarWidth: 100,
                     ),
                     customColors: CustomSliderColors(
                       dotColor: const Color.fromARGB(175, 255, 255, 255)/*Theme.of(context).primaryColor*/,
