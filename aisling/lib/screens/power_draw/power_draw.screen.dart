@@ -41,7 +41,10 @@ class PowerDrawScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Column(
-          Text(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
               "POWER DRAW",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -89,9 +92,6 @@ class PowerDrawScreen extends StatelessWidget {
                 ),
                ]
              ),
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
             SliderWidgetPowerDraw(gpuIndex: 0),
             SizedBox(width: 5),
             SliderWidgetPowerDraw(gpuIndex: 1),
