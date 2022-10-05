@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
@@ -20,6 +22,34 @@ Future<void> setFansFetch(int _gpuIndex, int _val) async {
  print(response.body);
 }
 
+Future<int> fetchFansData(int _gpuIndex) async {
+  /* I use GET instead of POST with auth */
+  // Map<String, String> myHeaders = Map<String, String>();
+  // myHeaders ['alice'] = 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>';
+
+  print("\n fetchFansData($_gpuIndex)");
+  Map<String, String> requestHeaders = {
+    'Content-type': 'application/json',
+    'alice': 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>'
+  };
+
+  final backendURL = Uri.parse('http://192.168.0.8:8080/api/get/fanSpeed');
+
+  http.Response response = await http.get(backendURL, headers: requestHeaders);
+ 
+  /* @TODO - build models to consume for code instantiation */
+  print(response.body);
+  print(json.decode(response.body));
+  print(json.decode(response.body)['fans']);
+  print(json.decode(response.body)['fans'][_gpuIndex]['gpuVal']);
+  // print(json.decode(response.body)['fans'][1]['gpuVal']);
+
+  int fanSpeed = int.parse(json.decode(response.body)['fans'][_gpuIndex]['gpuVal']);
+
+  return fanSpeed;
+}
+
+
 /* @TODO - copy this function above to fans and then change such for graphics */
 
 class SliderWidgetFans extends StatefulWidget {
@@ -32,13 +62,27 @@ class SliderWidgetFans extends StatefulWidget {
 
 class _SliderWidgetStateFans extends State<SliderWidgetFans> {
   var gpuIndex;
+
+  void fetchData() async {
+
+    await fetchFansData(0);
+    await fetchFansData(1);
+  }
+
+
+  
   @override
   void initState() {
     gpuIndex = widget.gpuIndex;
 
+    fetchData();
+
+
     super.initState();
   }
 
+
+ 
   @override
   Widget build(BuildContext context) {
     return  Column(
@@ -86,3 +130,5 @@ class _SliderWidgetStateFans extends State<SliderWidgetFans> {
             );
   }
 }
+
+
