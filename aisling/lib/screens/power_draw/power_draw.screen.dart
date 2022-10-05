@@ -60,7 +60,7 @@ class PowerDrawScreen extends StatelessWidget {
                  FutureBuilder(
                   future: fetchPowerDrawData(0), 
                   /*fetchFansData(0)*/
-                  builder: (BuildContext context, AsyncSnapshot<int> text) {
+                  builder: (BuildContext context, AsyncSnapshot<String> text) {
                     if (text.connectionState == ConnectionState.waiting) {
                       return new Text('loading data..');
                       // new Text(text.data!);
@@ -77,7 +77,7 @@ class PowerDrawScreen extends StatelessWidget {
                 FutureBuilder(
                   future: fetchPowerDrawData(1), 
                   /*fetchFansData(0)*/
-                  builder: (BuildContext context, AsyncSnapshot<int> text) {
+                  builder: (BuildContext context, AsyncSnapshot<String> text) {
                     if (text.connectionState == ConnectionState.waiting) {
                       return new Text('loading data..');
                       // new Text(text.data!);

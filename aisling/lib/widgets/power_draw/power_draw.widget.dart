@@ -8,7 +8,7 @@ Future<void> setPowerDraw(int _gpuIndex, double _val) async {
   // Map<String, String> myHeaders = Map<String, String>();
   // myHeaders ['alice'] = 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>';
 
-   print("\n SETTING MEMORY CLOCK");
+   print("\n SETTING POWER DRAW");
     Map<String, String> requestHeaders = {
       'Content-type': 'application/json',
       'alice': 'top_secret_key<kdkljsdljkdsjklkljsdkjlsdkljsdjklsdjklkjlsdjksdkjlsdkjlklsjdkjlsdljk>'
@@ -58,12 +58,12 @@ class _SliderWidgetStatePowerDraw extends State<SliderWidgetPowerDraw> {
                       )
                     ),
                   appearance: CircularSliderAppearance(
-                    size: 85,
+                    size: 205,
                     customWidths: CustomSliderWidths(
                       //handlerSize: 20,
-                      trackWidth: 1,
+                      trackWidth: 35,
                       //shadowWidth: 0,
-                      progressBarWidth: 11,
+                      progressBarWidth: 45,
                     ),
                     customColors: CustomSliderColors(
                       dotColor: const Color.fromARGB(175, 255, 255, 255)/*Theme.of(context).primaryColor*/,
