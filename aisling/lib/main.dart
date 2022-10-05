@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:aisling/screens/home/home.screen.dart';
 import 'package:aisling/wrappers/navigation/navigation.wrapper.dart';
 import 'package:aisling/screens/graphics/graphics.screen.dart';
+import 'package:aisling/screens/memory/memory_clocking.screen.dart';
+
 import 'package:aisling/screens/fans/fans.screen.dart';
 import 'package:aisling/screens/power_draw/power_draw.screen.dart';
 import 'package:aisling/screens/temp_thresh/temp_thresh.screen.dart';
@@ -84,9 +86,14 @@ class MyApp extends StatelessWidget {
             builder: (BuildContext context, GoRouterState state) => const HomeScreen(),
           ),
           GoRoute(
-            path: '/graphics',
-            name: 'graphics',
+            path: '/graphicsClock',
+            name: 'graphicsClock',
             builder: (BuildContext context, GoRouterState state) => const GraphicsScreen(),
+          ),
+          GoRoute(
+            path: '/memoryClock',
+            name: 'memoryClock',
+            builder: (BuildContext context, GoRouterState state) => const MemoryClockingScreen(),
           ),
           GoRoute(
            path: '/fans',

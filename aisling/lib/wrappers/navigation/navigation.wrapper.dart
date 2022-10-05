@@ -23,7 +23,7 @@ class NavigationWrapper extends StatelessWidget {
     static int _calculateSelectedIndex(BuildContext context) {
     final GoRouter route = GoRouter.of(context);
     final String location = route.location;
-    if (location.startsWith('/graphics')) {
+    if (location.startsWith('/graphicsClock')) {
       return 0;
     }
     if (location.startsWith('/fans')) {
@@ -35,13 +35,16 @@ class NavigationWrapper extends StatelessWidget {
     if (location.startsWith('/temp-thresh')) {
       return 3;
     }
+    if (location.startsWith('/memoryClock')) {
+      return 4;
+    }
     return 0;
   }
 
   void _onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
-        GoRouter.of(context).go('/graphics');
+        GoRouter.of(context).go('/graphicsClock');
         break;
       case 1:
         GoRouter.of(context).go('/fans');
@@ -49,8 +52,11 @@ class NavigationWrapper extends StatelessWidget {
       case 2:
         GoRouter.of(context).go('/power-draw');
         break;
-       case 3:
+      case 3:
         GoRouter.of(context).go('/temp-thresh');
+        break;
+      case 4:
+        GoRouter.of(context).go('/memoryClock');
         break;
     }
   }
@@ -266,7 +272,11 @@ class NavigationWrapper extends StatelessWidget {
             label: 'Temp Thresh',
             backgroundColor: Colors.green,
           ),
-   
+       BottomNavigationBarItem(
+            icon: Icon(Icons.sd_storage),
+            label: 'Memory Clock',
+            backgroundColor: Colors.green,
+          ),
         ],
         currentIndex: _calculateSelectedIndex(context),
         onTap: (int idx) => _onItemTapped(idx, context),
