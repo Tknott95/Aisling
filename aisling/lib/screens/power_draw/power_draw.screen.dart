@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 
 import 'package:aisling/widgets/power_draw/power_draw.widget.dart';
 
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 Future<String> fetchPowerDrawData(int _gpuIndex) async {
   /* I use GET instead of POST with auth */
   // Map<String, String> myHeaders = Map<String, String>();
