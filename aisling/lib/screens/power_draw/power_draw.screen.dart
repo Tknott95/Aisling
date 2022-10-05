@@ -65,7 +65,7 @@ class PowerDrawScreen extends StatelessWidget {
                       return new Text('loading data..');
                       // new Text(text.data!);
                     } else return new Text(
-                      text.data!,
+                      text.data,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           height: 3, fontSize: 30 
@@ -82,7 +82,7 @@ class PowerDrawScreen extends StatelessWidget {
                       return new Text('loading data..');
                       // new Text(text.data!);
                     } else return new Text(
-                      text.data!,
+                      text.data,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           height: 3, fontSize: 30 

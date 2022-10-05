@@ -68,7 +68,7 @@ class FansScreen extends StatelessWidget {
                       return new Text('loading data..');
                       // new Text(text.data!);
                     } else return new Text(
-                      text.data!.toString()+"%",
+                      text.data.toString()+"%",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           height: 3, fontSize: 30 
@@ -85,7 +85,7 @@ class FansScreen extends StatelessWidget {
                       return new Text('loading data..');
                       // new Text(text.data!);
                     } else return new Text(
-                      text.data!.toString()+"%",
+                      text.data.toString()+"%",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           height: 3, fontSize: 30 
