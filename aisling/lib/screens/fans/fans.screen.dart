@@ -4,7 +4,7 @@ import 'package:aisling/widgets/fans/fans.widget.dart';
 
 
 Future<String> testThis() async {
-  await Future.delayed(Duration(seconds: 3));
+  await Future.delayed(Duration(seconds: 1));
 
   return "tested";
 }
@@ -21,12 +21,15 @@ class FansScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             FutureBuilder(
-                  future: testThis(), 
-                  /*fetchFansData(0)*/
-                  builder: (context, AsyncSnapshot<String> text) {
-                    return new Text("yyyy"); /*text.data*/
-                  }
-                ),
+              future: testThis(), 
+              /*fetchFansData(0)*/
+              builder: (BuildContext context, AsyncSnapshot<String> text) {
+                if (text.connectionState == ConnectionState.waiting) {
+                  return new Text('loading data..');
+                   // new Text(text.data!);
+                } else return new Text(text.data!.toString());
+              }
+            ),
             SliderWidgetFans(gpuIndex: 0),
             SizedBox(height: 50),
             SliderWidgetFans(gpuIndex: 1),

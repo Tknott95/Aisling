@@ -51,7 +51,7 @@ Future<String> fetchFansData(int _gpuIndex) async {
 }
 
 Future<String> testThis() async {
-  await Future.delayed(Duration(seconds: 3));
+  await Future.delayed(Duration(seconds: 1));
 
   return "tested";
 }
@@ -99,15 +99,16 @@ class _SliderWidgetStateFans extends State<SliderWidgetFans> {
   Widget build(BuildContext context) {
     return  Column(
               children: [
-                FutureBuilder(
-                  future: testThis(), 
-                  /*fetchFansData(0)*/
-                  builder: (context, AsyncSnapshot<String> text) {
-                    if (text.data != null) {
-                      return new Text(text.data!);
-                    } else return new Text('backend api down');
-                  }
-                ),
+                // FutureBuilder(
+                //   future: testThis(), 
+                //   /*fetchFansData(0)*/
+                //   builder: (BuildContext context, AsyncSnapshot<String> text) {
+                //     if (text.connectionState == ConnectionState.waiting) {
+                //       return new Text('loading data..');
+                //       // new Text(text.data!);
+                //     } else return new Text(text.data!.toString());
+                //   }
+                // ),
                 Text(
                   'GPU_$gpuIndex FANS ',
                   style: Theme.of(context).textTheme.headline6,
