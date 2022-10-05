@@ -47,26 +47,30 @@ class FansScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             /* pull these future builders into own widget */
-            FutureBuilder(
-              future: fetchFansData(0), 
-              /*fetchFansData(0)*/
-              builder: (BuildContext context, AsyncSnapshot<String> text) {
-                if (text.connectionState == ConnectionState.waiting) {
-                  return new Text('loading data..');
-                   // new Text(text.data!);
-                } else return new Text(text.data!.toString());
-              }
-            ),
-            FutureBuilder(
-              future: fetchFansData(1), 
-              /*fetchFansData(0)*/
-              builder: (BuildContext context, AsyncSnapshot<String> text) {
-                if (text.connectionState == ConnectionState.waiting) {
-                  return new Text('loading data..');
-                   // new Text(text.data!);
-                } else return new Text(text.data!.toString());
-              }
-            ),
+             Row(
+               children: [
+                 FutureBuilder(
+                  future: fetchFansData(0), 
+                  /*fetchFansData(0)*/
+                  builder: (BuildContext context, AsyncSnapshot<String> text) {
+                    if (text.connectionState == ConnectionState.waiting) {
+                      return new Text('loading data..');
+                      // new Text(text.data!);
+                    } else return new Text(text.data!.toString());
+                  }
+                ),
+                FutureBuilder(
+                  future: fetchFansData(1), 
+                  /*fetchFansData(0)*/
+                  builder: (BuildContext context, AsyncSnapshot<String> text) {
+                    if (text.connectionState == ConnectionState.waiting) {
+                      return new Text('loading data..');
+                      // new Text(text.data!);
+                    } else return new Text(text.data!.toString());
+                  }
+                ),
+               ]
+             ),
             SliderWidgetFans(gpuIndex: 0),
             SizedBox(height: 50),
             SliderWidgetFans(gpuIndex: 1),
