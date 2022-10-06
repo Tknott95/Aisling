@@ -12,8 +12,12 @@ class TempThreshScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Text(
+              'temp of each will be shown here',
+              style: Theme.of(context).textTheme.headline2
+            ),
             SliderWidgetTempThresh(gpuIndex: 0),
-            SizedBox(width: 5),
+            SizedBox(height: 5),
             SliderWidgetTempThresh(gpuIndex: 1),
           ]
         ) 

@@ -45,8 +45,12 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
           case ConnectionState.waiting: return Center(child: Column(
             children: [
               Text(
-                'WAITING FOR MINING TO BEGIN - START MINING ABOVE TO UNLOCK',
-                style: Theme.of(context).textTheme.headline6
+                'WAITING FOR MINING TO BEGIN -  START AT YOUR REMOTE LOCATION TO UNLOCK',
+                style: Theme.of(context).textTheme.headline3
+              ),
+              Text(
+                'building a way to start miner from here next!',
+                // style: Theme.of(context).textTheme.headline3
               ),
                SpinKitDancingSquare(
                 size: 100,

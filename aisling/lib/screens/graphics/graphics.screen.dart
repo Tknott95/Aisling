@@ -44,6 +44,55 @@ class GraphicsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Text(
+              "Graphics Clock",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                height: 1, fontSize: 30 
+              )
+            ),
+            /* pull these future builders into own widget */
+             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+         
+                 FutureBuilder(
+                  future: fetchGraphClockData(0), 
+                  /*fetchFansData(0)*/
+                  builder: (BuildContext context, AsyncSnapshot<int> text) {
+                    if (text.connectionState == ConnectionState.waiting) {
+                      return new Text('loading data..');
+                      // new Text(text.data!);
+                    } else return new Text(
+                      "+"+text.data.toString(),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          height: 3, fontSize: 30 
+                        )
+                      );
+                  }
+                ),
+                SizedBox(width: 50),
+                FutureBuilder(
+                  future: fetchGraphClockData(1), 
+                  /*fetchFansData(0)*/
+                  builder: (BuildContext context, AsyncSnapshot<int> text) {
+                    if (text.connectionState == ConnectionState.waiting) {
+                      return new Text('loading data..');
+                      // new Text(text.data!);
+                    } else return new Text(
+                      "+"+text.data.toString(),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          height: 3, fontSize: 30 
+                        )
+                      );
+                  }
+                ),
+               ]
+             ),
+
             SliderWidgetGraphics(gpuIndex: 0),
             SizedBox(height: 50),
             SliderWidgetGraphics(gpuIndex: 1),

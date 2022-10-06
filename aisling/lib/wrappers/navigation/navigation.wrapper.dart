@@ -23,7 +23,7 @@ class NavigationWrapper extends StatelessWidget {
     static int _calculateSelectedIndex(BuildContext context) {
     final GoRouter route = GoRouter.of(context);
     final String location = route.location;
-    if (location.startsWith('/graphicsClock')) {
+    if (location.startsWith('/home')) {
       return 0;
     }
     if (location.startsWith('/fans')) {
@@ -38,13 +38,16 @@ class NavigationWrapper extends StatelessWidget {
     if (location.startsWith('/memoryClock')) {
       return 4;
     }
+    if (location.startsWith('/graphicsClock')) {
+      return 5;
+    }
     return 0;
   }
 
   void _onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
-        GoRouter.of(context).go('/graphicsClock');
+        GoRouter.of(context).go('/home');
         break;
       case 1:
         GoRouter.of(context).go('/fans');
@@ -57,6 +60,9 @@ class NavigationWrapper extends StatelessWidget {
         break;
       case 4:
         GoRouter.of(context).go('/memoryClock');
+        break;
+      case 5:
+        GoRouter.of(context).go('/graphicsClock');
         break;
     }
   }
@@ -254,7 +260,7 @@ class NavigationWrapper extends StatelessWidget {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Graphics',
+            label: 'Home',
             backgroundColor: Colors.grey,
           ),
           BottomNavigationBarItem(
@@ -263,20 +269,26 @@ class NavigationWrapper extends StatelessWidget {
             backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.auto_awesome),
+            icon: Icon(Icons.electric_bolt),
             label: 'Power Draw',
             backgroundColor: Colors.red,
           ),
             BottomNavigationBarItem(
-            icon: Icon(Icons.audiotrack),
+            icon: Icon(Icons.device_thermostat),
             label: 'Temp Thresh',
             backgroundColor: Colors.green,
           ),
-       BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.sd_storage),
             label: 'Memory Clock',
             backgroundColor: Colors.green,
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.auto_awesome),
+            label: 'Graphics',
+            backgroundColor: Colors.grey,
+          ),
+          
         ],
         currentIndex: _calculateSelectedIndex(context),
         onTap: (int idx) => _onItemTapped(idx, context),
