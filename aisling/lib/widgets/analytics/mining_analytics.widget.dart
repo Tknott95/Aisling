@@ -91,23 +91,31 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
           ]
         ),
         const Divider(),
-        Row(
+        Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            for(var ijk in _minerModel.workers!) Text("Workers: ${ijk.name}", style: Theme.of(context).textTheme.bodySmall),
-            for(var ijk in _minerModel.workers!) Text("Power: ${ijk.power}W", style: Theme.of(context).textTheme.bodySmall),
-            for(var ijk in _minerModel.workers!) Text("LHR Unlock: ${ijk.lhrUnlockPct}%", style: Theme.of(context).textTheme.bodySmall),
+           for(var ijk in _minerModel.workers!) ...[
+              Text("Workers: ${ijk.name}", style: Theme.of(context).textTheme.bodySmall),
+              Text("Power: ${ijk.power}W", style: Theme.of(context).textTheme.bodySmall),
+              Text("LHR Unlock: ${ijk.lhrUnlockPct}%", style: Theme.of(context).textTheme.bodySmall),
+              const Divider(),
+              Text("CCLK: ${ijk.cclk}", style: Theme.of(context).textTheme.bodySmall),
+              Text("MCLK: ${ijk.mclk}W", style: Theme.of(context).textTheme.bodySmall),
+              Text("CORE_TEMP: ${ijk.coreTemp}%", style: Theme.of(context).textTheme.bodySmall),
+            ],
           ],
         ),
-        const Divider(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            for(var ijk in _minerModel.workers!) Text("CCLK: ${ijk.cclk}", style: Theme.of(context).textTheme.bodySmall),
-            for(var ijk in _minerModel.workers!) Text("MCLK: ${ijk.mclk}W", style: Theme.of(context).textTheme.bodySmall),
-            for(var ijk in _minerModel.workers!) Text("CORE_TEMP: ${ijk.coreTemp}%", style: Theme.of(context).textTheme.bodySmall),
-          ],
-        ),
+        // const Divider(),
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //   children: [
+        //  for(var ijk in _minerModel.workers!) ...[
+        //       Text("CCLK: ${ijk.cclk}", style: Theme.of(context).textTheme.bodySmall),
+        //       Text("MCLK: ${ijk.mclk}W", style: Theme.of(context).textTheme.bodySmall),
+        //       Text("CORE_TEMP: ${ijk.coreTemp}%", style: Theme.of(context).textTheme.bodySmall),
+        //     ],
+        //   ],
+        // ),
         const Divider(),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
