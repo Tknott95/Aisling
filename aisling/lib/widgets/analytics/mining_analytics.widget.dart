@@ -95,7 +95,8 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
            for(var ijk in _minerModel.workers!) ...[
-              Text("Workers: ${ijk.name}", style: Theme.of(context).textTheme.bodySmall),
+              const Divider(),
+              Text("Workers: ${ijk.name}", style: Theme.of(context).textTheme.bodyMedium),
               Text("Power: ${ijk.power}W", style: Theme.of(context).textTheme.bodySmall),
               Text("LHR Unlock: ${ijk.lhrUnlockPct}%", style: Theme.of(context).textTheme.bodySmall),
               const Divider(),
@@ -117,7 +118,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
         //   ],
         // ),
         const Divider(),
-        Row(
+        Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text("Software:     ${_minerModel.software}", style: Theme.of(context).textTheme.bodySmall),
@@ -128,7 +129,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
           ],
         ),
         const Divider(),
-        Row(
+        Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             // Text("Accepted Shares:     ${_minerModel.algorithms![0].totalAccepted}", style: Theme.of(context).textTheme.headlineSmall),
@@ -139,7 +140,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
           ],
         ),
         const Divider(),
-        Row(
+        Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text("Algorithm:     ${_minerModel.algorithms![0].algorithm}", style: Theme.of(context).textTheme.bodySmall),
