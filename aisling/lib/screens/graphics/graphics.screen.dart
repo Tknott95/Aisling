@@ -6,6 +6,8 @@ import 'package:aisling/widgets/graphics/graphics.widget.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+/* need to modularize api calls so I can create a bool to pull from to set full app to offline emulated data vs actual reqs (non-gpu app dev work) */
+
 Future<int> fetchGraphClockData(int _gpuIndex) async {
   /* I use GET instead of POST with auth */
   // Map<String, String> myHeaders = Map<String, String>();
@@ -30,6 +32,12 @@ Future<int> fetchGraphClockData(int _gpuIndex) async {
   int _graphClockVal = int.parse(json.decode(response.body)['graphicsClock'][_gpuIndex]['gpuVal']);
 
   return _graphClockVal;
+}
+
+Future<int> _mockGraphClockData() async {
+  await Future.delayed(const Duration(seconds: 2));
+
+  return 137;
 }
 
 class GraphicsScreen extends StatelessWidget {
