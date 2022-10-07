@@ -31,8 +31,8 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
   void initState() {
 
 
-    Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
-      runningOffline ? _fetchLolMiningData() : _makeMockMiningData();
+    Timer mytimer = Timer.periodic(const Duration(seconds: 3), (timer) {
+      runningOffline ? _makeMockMiningData() : _fetchLolMiningData(); 
     });
 
     super.initState();
@@ -257,8 +257,8 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
         _mockAlgorithm,
       ]
     );
-    // _mockMinerModel = 
 
+    _streamCtrl.sink.add(_mockMinerModel);
   }
 }
 
