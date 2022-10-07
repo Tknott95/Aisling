@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          children: const [
             MiningAnalyWidget(),
             // SliderWidgetGraphics(gpuIndex: 0),
             // SizedBox(height: 50),
