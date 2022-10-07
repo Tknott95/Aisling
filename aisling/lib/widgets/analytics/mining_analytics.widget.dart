@@ -3,8 +3,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:aisling/models/lolminer.model.dart';
+import 'package:aisling/models/lolminer.model.dart' as lm;
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+bool runningOffline = true;
 
 class MiningAnalyWidget extends StatefulWidget {
   const MiningAnalyWidget({Key? key}) : super(key: key);
@@ -17,7 +19,7 @@ class MiningAnalyWidget extends StatefulWidget {
 
 // @TODO modularize this
 class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
-  final StreamController<Lolminer> _streamCtrl = StreamController();
+  final StreamController<lm.Lolminer> _streamCtrl = StreamController();
 
 
   @override
@@ -30,7 +32,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
 
 
     Timer mytimer = Timer.periodic(const Duration(seconds: 5), (timer) {
-      _fetchLolMiningData();
+      runningOffline ? _fetchLolMiningData() : _makeMockMiningData();
     });
 
     super.initState();
@@ -38,7 +40,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<Lolminer>(
+    return StreamBuilder<lm.Lolminer>(
       stream: _streamCtrl.stream,
       builder: (context, snapshot) {
         switch(snapshot.connectionState) {
@@ -76,7 +78,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
   }
             // return Text(snapshot.data.software, style: Theme.of(context).textTheme.headline1);
 
-  Widget analyticsWidget(Lolminer _minerModel) {
+  Widget analyticsWidget(lm.Lolminer _minerModel) {
     return Column(
       children: [
         /* Make a col of workers inside an if state @TODO */
@@ -92,7 +94,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
         ),
         const Divider(),
         Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignModelment.spaceEvenly,
           children: [
            for(var ijk in _minerModel.workers!) ...[
               const Divider(),
@@ -166,7 +168,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
       var response = await http.get(_url);
       print('Response status: ${response.statusCode}');
 
-      final miningData = Lolminer.fromJson(json.decode(response.body));
+      final miningData = lm.Lolminer.fromJson(json.decode(response.body));
 
       print(json.decode(response.body));
 
@@ -183,6 +185,80 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<void> _makeMockMiningData() async {
+    /* waiting two seconds to return the mockData to emulatre an actual api */
+    await Future.delayed(const Duration(seconds: 2));
+
+
+    lm.Worker _mockWorker00 = lm.Worker(
+      index: 0,
+      name: "worker name",
+      power: 173.37,
+      cclk: 10,
+      mclk: 73,
+      coreTemp: 73,
+      jucTemp: 17,
+      memTemp: 77,
+      fanSpeed: 44,
+      lhrUnlockPct: 100,
+      dualFactor: 13,
+      pcieAddress: "0:0:0"
+    );
+
+    lm.Session _lolMinerSession = lm.Session(
+      startup: 137,
+      startupString: "lorem ipsum",
+      uptime: 10,
+      lastUpdate: 731137
+    );
+
+    lm.Algorithm _mockAlgorithm = lm.Algorithm(
+      algorithm: 'autolykos',
+      algorithmAppendix:  '1337kos',
+      pool: 'us-2miners-ipsum',
+      user: 'x137',
+      worker: 'addr8043843hsdfdsf8o3u',
+      performanceUnit: "1337 unit",
+      performanceFactor: 1,
+      totalPerformance: 153.71,
+      totalAccepted: 10,
+      totalRejected: 0,
+      totalStales: 0,
+      totalErrors: 0,
+      workerPerformance: [
+
+      ],
+      workerAccepted: [
+
+      ],
+      workerRejected: [
+
+      ],
+      workerStales: [
+
+      ],
+      workerErrors: [
+
+      ]
+    );
+
+    lm.Lolminer _mockMinerModel = lm.Lolminer(
+      software: "software lorem ipsum",
+      session: _lolMinerSession,
+      numWorkers: 2,
+      workers: [
+        _mockWorker00,
+        _mockWorker00,
+      ],
+      numAlgorithms: 1,
+      algorithms: [
+        _mockAlgorithm,
+      ]
+    );
+    // _mockMinerModel = 
+
   }
 }
 
