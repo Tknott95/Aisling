@@ -94,7 +94,7 @@ class _MiningAnalyWidgetState extends State<MiningAnalyWidget> {
         ),
         const Divider(),
         Column(
-          mainAxisAlignment: MainAxisAlignModelment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
            for(var ijk in _minerModel.workers!) ...[
               const Divider(),
