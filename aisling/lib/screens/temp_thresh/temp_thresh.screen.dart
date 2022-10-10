@@ -14,7 +14,7 @@ class TempThreshScreen extends StatelessWidget {
           children: [
             Text(
               'temp of each will be shown here',
-              style: Theme.of(context).textTheme.headline2
+              style: Theme.of(context).textTheme.titleSmall
             ),
             SliderWidgetTempThresh(gpuIndex: 0),
             SizedBox(height: 5),

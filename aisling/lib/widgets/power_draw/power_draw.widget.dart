@@ -53,7 +53,7 @@ class _SliderWidgetStatePowerDraw extends State<SliderWidgetPowerDraw> {
           initialValue: 5,
           innerWidget: (sliderValue) => Center(
             child: Text(
-                "+"+sliderValue.toStringAsFixed(0),
+                "+${sliderValue.toStringAsFixed(0)}",
                 style: Theme.of(context).textTheme.bodyText1,
               )
             ),

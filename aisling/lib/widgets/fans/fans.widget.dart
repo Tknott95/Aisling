@@ -50,49 +50,47 @@ class _SliderWidgetStateFans extends State<SliderWidgetFans> {
   @override
   Widget build(BuildContext context) {
     return  Column(
-              children: [
-                Text(
-                  'GPU_$gpuIndex FANS ',
-                  style: Theme.of(context).textTheme.headline6,
-                  ),
-                SleekCircularSlider(
-                  min: 0,
-                  max: 80,
-                  initialValue: 5,
-                  innerWidget: (sliderValue) => Center(
-                    child: Text(
-                        "+"+sliderValue.toStringAsFixed(0),
-                        style: Theme.of(context).textTheme.bodyText1,
-                      )
-                    ),
-                  appearance: CircularSliderAppearance(
-                    size: 155,
-                    customWidths: CustomSliderWidths(
-                      //handlerSize: 20,
-                      trackWidth: 25,
-                      //shadowWidth: 0,
-                      progressBarWidth: 40,
-                    ),
-                    customColors: CustomSliderColors(
-                      dotColor: const Color.fromARGB(175, 255, 255, 255)/*Theme.of(context).primaryColor*/,
-                      trackColor: const Color.fromARGB(172, 0, 0, 0),
-                      progressBarColors: const [
-                      Color.fromARGB(255, 240, 40, 13),
-                      Color.fromARGB(255, 238, 169, 20),
-                      Color.fromARGB(255, 8, 63, 3),
-                      Color.fromARGB(255, 50, 192, 45),
-                      ],
-                     shadowColor: const Color.fromARGB(255, 0, 0, 0),
-                    ),
-                  ),
-                  onChange: (double value) {
-                    // nvidia_set_graphics_clock(gpuIndex, value.round());
-                    setFansFetch(gpuIndex, value.round());
-                  }
-                ),
+      children: [
+        Text(
+          'GPU_$gpuIndex FANS ',
+          style: Theme.of(context).textTheme.headline6,
+          ),
+        SleekCircularSlider(
+          min: 0,
+          max: 80,
+          initialValue: 5,
+          innerWidget: (sliderValue) => Center(
+            child: Text(
+                "+${sliderValue.toStringAsFixed(0)}",
+                style: Theme.of(context).textTheme.bodyText1,
+              )
+            ),
+          appearance: CircularSliderAppearance(
+            size: 155,
+            customWidths: CustomSliderWidths(
+              //handlerSize: 20,
+              trackWidth: 25,
+              //shadowWidth: 0,
+              progressBarWidth: 40,
+            ),
+            customColors: CustomSliderColors(
+              dotColor: const Color.fromARGB(175, 255, 255, 255)/*Theme.of(context).primaryColor*/,
+              trackColor: const Color.fromARGB(172, 0, 0, 0),
+              progressBarColors: const [
+              Color.fromARGB(255, 240, 40, 13),
+              Color.fromARGB(255, 238, 169, 20),
+              Color.fromARGB(255, 8, 63, 3),
+              Color.fromARGB(255, 50, 192, 45),
               ],
-            );
+              shadowColor: const Color.fromARGB(255, 0, 0, 0),
+            ),
+          ),
+          onChange: (double value) {
+            // nvidia_set_graphics_clock(gpuIndex, value.round());
+            setFansFetch(gpuIndex, value.round());
+          }
+        ),
+      ],
+    );
   }
 }
-
-
