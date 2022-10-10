@@ -42,46 +42,46 @@ class _SliderWidgetStatePowerDraw extends State<SliderWidgetPowerDraw> {
   @override
   Widget build(BuildContext context) {
     return  Column(
-              children: [
-                Text(
-                  'GPU_$gpuIndex POWER DRAW',
-                  style: Theme.of(context).textTheme.headline6,
-                  ),
-                SleekCircularSlider(
-                  min: 0,
-                  max: 80,
-                  initialValue: 5,
-                  innerWidget: (sliderValue) => Center(
-                    child: Text(
-                        "+"+sliderValue.toStringAsFixed(0),
-                        style: Theme.of(context).textTheme.bodyText1,
-                      )
-                    ),
-                  appearance: CircularSliderAppearance(
-                    size: 205,
-                    customWidths: CustomSliderWidths(
-                      //handlerSize: 20,
-                      trackWidth: 35,
-                      //shadowWidth: 0,
-                      progressBarWidth: 45,
-                    ),
-                    customColors: CustomSliderColors(
-                      dotColor: const Color.fromARGB(175, 255, 255, 255)/*Theme.of(context).primaryColor*/,
-                      trackColor: const Color.fromARGB(172, 0, 0, 0),
-                      progressBarColors: const [
-                      Color.fromARGB(255, 240, 40, 13),
-                      Color.fromARGB(255, 238, 169, 20),
-                      Color.fromARGB(255, 8, 63, 3),
-                      Color.fromARGB(255, 50, 192, 45),
-                      ],
-                     shadowColor: const Color.fromARGB(255, 0, 0, 0),
-                    ),
-                  ),
-                  onChange: (double value) {
-                    setPowerDraw(gpuIndex, value/*value.round()*/);
-                  }
-                ),
+      children: [
+        Text(
+          'GPU_$gpuIndex POWER DRAW',
+          style: Theme.of(context).textTheme.headline6,
+          ),
+        SleekCircularSlider(
+          min: 0,
+          max: 80,
+          initialValue: 5,
+          innerWidget: (sliderValue) => Center(
+            child: Text(
+                "+"+sliderValue.toStringAsFixed(0),
+                style: Theme.of(context).textTheme.bodyText1,
+              )
+            ),
+          appearance: CircularSliderAppearance(
+            size: 205,
+            customWidths: CustomSliderWidths(
+              //handlerSize: 20,
+              trackWidth: 35,
+              //shadowWidth: 0,
+              progressBarWidth: 45,
+            ),
+            customColors: CustomSliderColors(
+              dotColor: const Color.fromARGB(175, 255, 255, 255)/*Theme.of(context).primaryColor*/,
+              trackColor: const Color.fromARGB(172, 0, 0, 0),
+              progressBarColors: const [
+              Color.fromARGB(255, 240, 40, 13),
+              Color.fromARGB(255, 238, 169, 20),
+              Color.fromARGB(255, 8, 63, 3),
+              Color.fromARGB(255, 50, 192, 45),
               ],
-            );
+              shadowColor: const Color.fromARGB(255, 0, 0, 0),
+            ),
+          ),
+          onChange: (double value) {
+            setPowerDraw(gpuIndex, value/*value.round()*/);
+          }
+        ),
+      ],
+    );
   }
 }
